@@ -11,5 +11,6 @@ def scrape_movies_view(request):
 
 def home(request):
     
+    
     movie_details = News.objects.all()  # Fetch the latest 10 news items
     return render(request, 'home.html',context={'news_data': movie_details})
