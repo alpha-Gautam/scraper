@@ -1,4 +1,3 @@
-/venv
-/.env
-
-/scraper/home/__pycache__/
+venv/
+.env
+__pycache__/
