@@ -16,14 +16,14 @@ def scrape_new_movies():
     soup = BeautifulSoup(response.text, 'html.parser')
     
     news_items = []
-    deta = soup.find_all('div', class_='ipc-list-card--border-line')
+    deta = soup.select('div', class_='ipc-list-card--border-line')
 
     for item in deta:
-        title = item.find('a',class_="ipc-link ipc-link--base sc-fbb0baf2-2 jQjxnE")
-        description = item.find('div', class_='ipc-html-content-inner-div')
-        image_url = item.find('img',class_="ipc-image")
-        external_url = title['href']
-
+        title = item.select_one('a',class_="ipc-link ipc-link--base sc-fbb0baf2-2 jQjxnE")
+        description = item.select_one('div', class_='ipc-html-content-inner-div')
+        image_url = item.select_one('img',class_="ipc-image")
+        external_url = title['href'] if title else None
+    
         news_item = News(
             title=title.text if title else 'no title',
             description=description.text if description else 'no description',
@@ -39,7 +39,7 @@ def scrape_new_movies():
     # News.objects.bulk_create(news_items)  # Efficient bulk insert
 
 
-scrape_new_movies()
+# scrape_new_movies()
 
 
 
