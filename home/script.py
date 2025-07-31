@@ -2,8 +2,20 @@ from bs4 import BeautifulSoup
 from .models import News
 
 import requests
+import os
 
 
+
+def download_image(image_url, save_dir, image_name):
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
+    
+    
+    image_path = os.path.join(save_dir, image_name)
+    response = requests.get(image_url)
+    if response.status_code == 200:
+        with open(f"{save_dir}/{image_name}", "wb") as f:
+            f.write(response.content)
 
 def scrape_new_movies():
     url = 'https://www.imdb.com/news/movie'
