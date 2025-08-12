@@ -7,7 +7,16 @@ total_g_el=[i for j in group for i in j ]
 # print(total_g_el)
 
 a=[[0]*3]*5
-print(a)
+# print(a)
 
 
+def one():
+    
+    a=4
+    b=5
+    return a,b
 
+s,d=one()
+
+print(s)
+print(d)

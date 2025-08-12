@@ -6,9 +6,9 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 def scrape_movies_view(request):
-    scrape_new_movies()
+    count=scrape_new_movies()
     return JsonResponse({'status': 'success',
-                         'message': 'Movies scraped successfully.'}, status=200)
+                         'message': f'Movies scraped successfully. {count} images downloaded.'}, status=200)
 
 def home(request):
     

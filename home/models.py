@@ -23,6 +23,4 @@ class News(models.Model):
     external_url = models.URLField()
 
     def __str__(self):
-        return self.title
-    
-    
+        return f"{self.title}\n{self.description}\n{self.image_url}\n{self.external_url}\n"
